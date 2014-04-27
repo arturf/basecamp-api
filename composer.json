@@ -1,0 +1,21 @@
+{
+    "name": "arturf/basecamp-api",
+    "description": "PHP wrapper for new Basecamp API",
+    "keywords": ["37Signals", "Basecamp", "PHP", "API"],
+    "license": "MIT",
+    "authors": [
+		{
+            "name": "Artur Fursa",
+            "homepage": "http://www.binn.ru"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "kriswallsmith/buzz": "0.*"
+    },
+    "autoload":{
+        "psr-0":{
+            "Basecamp\\": ""
+        }
+    }
+}
