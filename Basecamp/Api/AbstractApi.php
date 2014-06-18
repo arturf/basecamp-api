@@ -54,7 +54,7 @@ abstract class AbstractApi
 
     private function request($method, $resource, $params = [])
     {
-        $message = new Request($method, $resource, self::BASE_URL . $this->client->getAccountData()['clientId'] . self::API_VERSION);
+        $message = new Request($method, $resource, self::BASE_URL . $this->client->getAccountData()['accountId'] . self::API_VERSION);
         $message->setHeaders([
             'User-Agent: ' . $this->client->getAccountData()['appName'],
             'Content-Type: application/json',

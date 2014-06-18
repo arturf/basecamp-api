@@ -34,7 +34,7 @@ class Client
      * @param array $accountData Assotiative array
      * <code>
      * [
-     *     'clientId' => '', // Basecamp client ID
+     *     'accountId' => '', // Basecamp account ID
      *     'appName' =>  '', // Application name (used as User-Agent header)
      *     'token' =>    '', // OAuth token
      *     'login' =>    '', // 37Signal's account login

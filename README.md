@@ -31,7 +31,7 @@ API Usage
 Get client
 ```php
 $client = new \Basecamp\Client([
-    'clientId' => '', // Basecamp client ID
+    'accountId' => '', // Basecamp account ID
     'appName' => '', // Application name (used as User-Agent header)
 
     // OAuth token
