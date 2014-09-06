@@ -82,6 +82,8 @@ abstract class AbstractApi
 
         $bc->send($message, $response);
         $data = new \stdClass();
+        
+        $data->json_response = json_decode($response->getContent());
 
         switch ($response->getStatusCode()) {
             case 201:
