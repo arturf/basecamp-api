@@ -40,4 +40,30 @@ class Topics extends AbstractApi
 
         return $data;
     }
+
+    /**
+     * @param  integer $projectId
+     * @param  integer $topicId
+     *
+     * @return array
+     */
+    public function archive($projectId, $topicId)
+    {
+        $data = $this->put(sprintf('/projects/%d/topics/%d/archive.json', $projectId, $topicId), []);
+
+        return $data;
+    }
+
+    /**
+     * @param  integer $projectId
+     * @param  integer $topicId
+     *
+     * @return array
+     */
+    public function activate($projectId, $topicId)
+    {
+        $data = $this->put(sprintf('/projects/%d/topics/%d/activate.json', $projectId, $topicId), []);
+
+        return $data;
+    }
 }
