@@ -1,9 +1,11 @@
 <?php
+
 namespace Basecamp;
+
 use Basecamp\Api\Accesses;
 use Basecamp\Api\Attachments;
-use Basecamp\Api\CalendarsEvents;
 use Basecamp\Api\Calendars;
+use Basecamp\Api\CalendarsEvents;
 use Basecamp\Api\Comments;
 use Basecamp\Api\Documents;
 use Basecamp\Api\Events;
@@ -32,15 +34,15 @@ class Client
      * Class constructor.
      *
      * @param array $accountData Assotiative array
-     * <code>
-     * [
-     *     'accountId' => '', // Basecamp account ID
-     *     'appName' =>  '', // Application name (used as User-Agent header)
-     *     'token' =>    '', // OAuth token
-     *     'login' =>    '', // 37Signal's account login
-     *     'password' => '', // 37Signal's account password
-     * ]
-     * </code>
+     *                           <code>
+     *                           [
+     *                           'accountId' => '', // Basecamp account ID
+     *                           'appName' =>  '', // Application name (used as User-Agent header)
+     *                           'token' =>    '', // OAuth token
+     *                           'login' =>    '', // 37Signal's account login
+     *                           'password' => '', // 37Signal's account password
+     *                           ]
+     *                           </code>
      */
     public function __construct(array $accountData)
     {

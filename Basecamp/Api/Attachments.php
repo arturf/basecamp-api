@@ -1,4 +1,5 @@
 <?php
+
 namespace Basecamp\Api;
 
 /**
@@ -23,13 +24,13 @@ class Attachments extends AbstractApi
     /**
      * Get project's attachments.
      *
-     * @param integer $projectId
+     * @param int $projectId
      *
      * @return array
      */
     public function projectAll($projectId)
     {
-        $data = $this->get('/projects/' . $projectId . '/attachments.json');
+        $data = $this->get('/projects/'.$projectId.'/attachments.json');
 
         return $data;
     }
@@ -37,14 +38,14 @@ class Attachments extends AbstractApi
     /**
      * Get attachment.
      *
-     * @param integer $projectId
-     * @param integer $attachmentId
+     * @param int $projectId
+     * @param int $attachmentId
      *
      * @return object
      */
     public function show($projectId, $attachmentId)
     {
-        $data = $this->get('GET /projects/' . $projectId . '/attachments/' . $attachmentId . '.json');
+        $data = $this->get('GET /projects/'.$projectId.'/attachments/'.$attachmentId.'.json');
 
         return $data;
     }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Basecamp\Api;
 
 /**
@@ -9,7 +10,7 @@ namespace Basecamp\Api;
 class Calendars extends AbstractApi
 {
     /**
-     * Get calendars
+     * Get calendars.
      *
      * @return array
      */
@@ -23,13 +24,13 @@ class Calendars extends AbstractApi
     /**
      * Get calendar.
      *
-     * @param integer $calendarId
+     * @param int $calendarId
      *
      * @return object
      */
     public function show($calendarId)
     {
-        $data = $this->get('/calendars/' . $calendarId . '.json');
+        $data = $this->get('/calendars/'.$calendarId.'.json');
 
         return $data;
     }
@@ -51,14 +52,14 @@ class Calendars extends AbstractApi
     /**
      * Update calendar.
      *
-     * @param integer $calendarId
+     * @param int   $calendarId
      * @param array $params
      *
      * @return object
      */
     public function update($calendarId, array $params)
     {
-        $data = $this->put('/calendars/' . $calendarId . '.json', $params);
+        $data = $this->put('/calendars/'.$calendarId.'.json', $params);
 
         return $data;
     }
@@ -66,13 +67,13 @@ class Calendars extends AbstractApi
     /**
      * Delete calendar.
      *
-     * @param integer $calendarId
+     * @param int $calendarId
      *
      * @return object
      */
     public function remove($calendarId)
     {
-        $data = $this->delete('/calendars/' . $calendarId . '.json');
+        $data = $this->delete('/calendars/'.$calendarId.'.json');
 
         return $data;
     }

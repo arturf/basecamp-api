@@ -1,4 +1,5 @@
 <?php
+
 namespace Basecamp\Api;
 
 /**
@@ -11,13 +12,13 @@ class Accesses extends AbstractApi
     /**
      * Get accesses to project.
      *
-     * @param integer $projectId
+     * @param int $projectId
      *
      * @return array
      */
     public function project($projectId)
     {
-        $data = $this->get('/projects/' . $projectId . '/accesses.json');
+        $data = $this->get('/projects/'.$projectId.'/accesses.json');
 
         return $data;
     }
@@ -25,14 +26,14 @@ class Accesses extends AbstractApi
     /**
      * Grant access to project.
      *
-     * @param integer $projectId
+     * @param int   $projectId
      * @param array $userIds
      *
      * @return object
      */
     public function grantProject($projectId, array $userIds)
     {
-        $data = $this->post('/projects/' . $projectId . '/accesses.json', $userIds);
+        $data = $this->post('/projects/'.$projectId.'/accesses.json', $userIds);
 
         return $data;
     }
@@ -40,14 +41,14 @@ class Accesses extends AbstractApi
     /**
      * Revoke access from project.
      *
-     * @param integer $projectId
-     * @param integer $userId
+     * @param int $projectId
+     * @param int $userId
      *
      * @return object
      */
     public function revokeProject($projectId, $userId)
     {
-        $data = $this->delete('/projects/' . $projectId . '/accesses/' . $userId . '.json');
+        $data = $this->delete('/projects/'.$projectId.'/accesses/'.$userId.'.json');
 
         return $data;
     }
@@ -55,13 +56,13 @@ class Accesses extends AbstractApi
     /**
      * Get accesses to calendar.
      *
-     * @param integer $calendarId
+     * @param int $calendarId
      *
      * @return array
      */
     public function calendar($calendarId)
     {
-        $data = $this->get('/calendars/' . $calendarId . '/accesses.json');
+        $data = $this->get('/calendars/'.$calendarId.'/accesses.json');
 
         return $data;
     }
@@ -69,14 +70,14 @@ class Accesses extends AbstractApi
     /**
      * Grant access to calendar.
      *
-     * @param integer $calendarId
+     * @param int   $calendarId
      * @param array $userIds
      *
      * @return object
      */
     public function grantCalendar($calendarId, array $userIds)
     {
-        $data = $this->post('/calendars/' . $calendarId . '/accesses.json', $userIds);
+        $data = $this->post('/calendars/'.$calendarId.'/accesses.json', $userIds);
 
         return $data;
     }
@@ -84,14 +85,14 @@ class Accesses extends AbstractApi
     /**
      * Revoke access from calendar.
      *
-     * @param integer $calendarId
-     * @param integer $userId
+     * @param int $calendarId
+     * @param int $userId
      *
      * @return object
      */
     public function revokeCalendar($calendarId, $userId)
     {
-        $data = $this->delete('/projects/' . $calendarId . '/accesses/' . $userId . '.json');
+        $data = $this->delete('/projects/'.$calendarId.'/accesses/'.$userId.'.json');
 
         return $data;
     }

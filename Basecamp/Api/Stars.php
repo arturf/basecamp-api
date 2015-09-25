@@ -1,4 +1,5 @@
 <?php
+
 namespace Basecamp\Api;
 
 /**
@@ -23,13 +24,13 @@ class Stars extends AbstractApi
     /**
      * Star a project.
      *
-     * @param integer $projectId
+     * @param int $projectId
      *
      * @return object
      */
     public function star($projectId)
     {
-        $data = $this->post('/projects/' . $projectId . '/star.json', []);
+        $data = $this->post('/projects/'.$projectId.'/star.json', []);
 
         return $data;
     }
@@ -37,13 +38,13 @@ class Stars extends AbstractApi
     /**
      * Unstar a project.
      *
-     * @param integer $projectId
+     * @param int $projectId
      *
      * @return object
      */
     public function unstar($projectId)
     {
-        $data = $this->delete('/projects/' . $projectId . '/star.json');
+        $data = $this->delete('/projects/'.$projectId.'/star.json');
 
         return $data;
     }

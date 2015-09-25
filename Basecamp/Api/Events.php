@@ -1,4 +1,5 @@
 <?php
+
 namespace Basecamp\Api;
 
 /**
@@ -12,7 +13,7 @@ class Events extends AbstractApi
      * Global events.
      *
      * @param string $since Date and time in "2012-03-24T11:00:00-06:00" format.
-     * @param integer $page
+     * @param int    $page
      *
      * @return array
      */
@@ -20,7 +21,7 @@ class Events extends AbstractApi
     {
         $data = $this->get('/events.json', [
             'since' => $since,
-            'page' => $page,
+            'page'  => $page,
         ]);
 
         return $data;
@@ -29,17 +30,17 @@ class Events extends AbstractApi
     /**
      * Project events.
      *
-     * @param integer $projectId
-     * @param string $since Date and time in "2012-03-24T11:00:00-06:00" format.
-     * @param integer $page
+     * @param int    $projectId
+     * @param string $since     Date and time in "2012-03-24T11:00:00-06:00" format.
+     * @param int    $page
      *
      * @return array
      */
     public function allByProject($projectId, $since, $page = 1)
     {
-        $data = $this->get('/projects/' . $projectId . '/events.json', [
+        $data = $this->get('/projects/'.$projectId.'/events.json', [
             'since' => $since,
-            'page' => $page,
+            'page'  => $page,
         ]);
 
         return $data;
@@ -48,17 +49,17 @@ class Events extends AbstractApi
     /**
      * Person events.
      *
-     * @param integer $userId
-     * @param string $since Date and time in "2012-03-24T11:00:00-06:00" format.
-     * @param integer $page
+     * @param int    $userId
+     * @param string $since  Date and time in "2012-03-24T11:00:00-06:00" format.
+     * @param int    $page
      *
      * @return array
      */
     public function allByPerson($userId, $since, $page = 1)
     {
-        $data = $this->get('/people/' . $userId . '/events.json', [
+        $data = $this->get('/people/'.$userId.'/events.json', [
             'since' => $since,
-            'page' => $page,
+            'page'  => $page,
         ]);
 
         return $data;

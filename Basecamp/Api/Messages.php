@@ -1,4 +1,5 @@
 <?php
+
 namespace Basecamp\Api;
 
 /**
@@ -11,14 +12,14 @@ class Messages extends AbstractApi
     /**
      * Specified message.
      *
-     * @param integer $projectId
-     * @param integer $messageId
+     * @param int $projectId
+     * @param int $messageId
      *
      * @return object
      */
     public function show($projectId, $messageId)
     {
-        $data = $this->get('/projects/' . $projectId . '/messages/' . $messageId . '.json');
+        $data = $this->get('/projects/'.$projectId.'/messages/'.$messageId.'.json');
 
         return $data;
     }
@@ -26,14 +27,14 @@ class Messages extends AbstractApi
     /**
      * Create message.
      *
-     * @param integer $projectId
+     * @param int   $projectId
      * @param array $params
      *
      * @return object
      */
     public function create($projectId, array $params)
     {
-        $data = $this->post('/projects/' . $projectId . '/messages.json', $params);
+        $data = $this->post('/projects/'.$projectId.'/messages.json', $params);
 
         return $data;
     }
@@ -41,15 +42,15 @@ class Messages extends AbstractApi
     /**
      * Update message.
      *
-     * @param integer $projectId
-     * @param integer $messageId
+     * @param int   $projectId
+     * @param int   $messageId
      * @param array $params
      *
      * @return object
      */
     public function update($projectId, $messageId, array $params)
     {
-        $data = $this->put('/projects/' . $projectId . '/messages/' . $messageId . '.json', $params);
+        $data = $this->put('/projects/'.$projectId.'/messages/'.$messageId.'.json', $params);
 
         return $data;
     }
@@ -57,14 +58,14 @@ class Messages extends AbstractApi
     /**
      * Delete message.
      *
-     * @param integer $projectId
-     * @param integer $messageId
+     * @param int $projectId
+     * @param int $messageId
      *
      * @return object
      */
     public function remove($projectId, $messageId)
     {
-        $data = $this->delete('/projects/' . $projectId . '/messages/' . $messageId . '.json');
+        $data = $this->delete('/projects/'.$projectId.'/messages/'.$messageId.'.json');
 
         return $data;
     }

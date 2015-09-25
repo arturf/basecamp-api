@@ -1,4 +1,5 @@
 <?php
+
 namespace Basecamp\Api;
 
 use Basecamp\Client;
@@ -24,7 +25,7 @@ abstract class AbstractApi
 
     final protected function get($resource, array $params = [])
     {
-        $resource = empty($params) ? $resource : ($resource . (false === strpos($resource, '?') ? '?' : '&') . http_build_query($params, '', '&'));
+        $resource = empty($params) ? $resource : ($resource.(false === strpos($resource, '?') ? '?' : '&').http_build_query($params, '', '&'));
 
         $response = $this->request(Request::METHOD_GET, $resource);
 
@@ -54,9 +55,9 @@ abstract class AbstractApi
 
     private function request($method, $resource, $params = [])
     {
-        $message = new Request($method, $resource, self::BASE_URL . $this->client->getAccountData()['accountId'] . self::API_VERSION);
+        $message = new Request($method, $resource, self::BASE_URL.$this->client->getAccountData()['accountId'].self::API_VERSION);
         $message->setHeaders([
-            'User-Agent: ' . $this->client->getAccountData()['appName'],
+            'User-Agent: '.$this->client->getAccountData()['appName'],
             'Content-Type: application/json',
         ]);
 
@@ -75,9 +76,9 @@ abstract class AbstractApi
         $bc->setTimeout($this->timeout);
 
         if (!empty($this->client->getAccountData()['login']) && !empty($this->client->getAccountData()['password'])) {
-            $bc->setOption(CURLOPT_USERPWD, $this->client->getAccountData()['login'] . ':' . $this->client->getAccountData()['password']);
+            $bc->setOption(CURLOPT_USERPWD, $this->client->getAccountData()['login'].':'.$this->client->getAccountData()['password']);
         } elseif (!empty($this->client->getAccountData()['token'])) {
-            $message->addHeader('Authorization: Bearer ' . $this->client->getAccountData()['token']);
+            $message->addHeader('Authorization: Bearer '.$this->client->getAccountData()['token']);
         }
 
         $bc->send($message, $response);
@@ -107,7 +108,7 @@ abstract class AbstractApi
                 $data->message = '415 Unsupported Media Type';
                 break;
             case 429:
-                $data->message = '429 Too Many Requests. ' . $response->getHeader('Retry-After');
+                $data->message = '429 Too Many Requests. '.$response->getHeader('Retry-After');
                 break;
             case 500:
                 $data->message = '500 Hmm, that isn’t right';

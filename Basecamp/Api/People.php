@@ -1,4 +1,5 @@
 <?php
+
 namespace Basecamp\Api;
 
 /**
@@ -23,13 +24,13 @@ class People extends AbstractApi
     /**
      * Get person.
      *
-     * @param integer $userId
+     * @param int $userId
      *
      * @return object
      */
     public function show($userId)
     {
-        $data = $this->get('/people/' . $userId . '.json');
+        $data = $this->get('/people/'.$userId.'.json');
 
         return $data;
     }
@@ -37,13 +38,13 @@ class People extends AbstractApi
     /**
      * Delete person.
      *
-     * @param integer $userId
+     * @param int $userId
      *
      * @return object
      */
     public function remove($userId)
     {
-        $data = $this->delete('/people/' . $userId . '.json');
+        $data = $this->delete('/people/'.$userId.'.json');
 
         return $data;
     }
