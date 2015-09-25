@@ -1,4 +1,5 @@
 <?php
+
 namespace Basecamp\Api;
 
 /**
@@ -35,13 +36,13 @@ class Projects extends AbstractApi
     /**
      * Get project.
      *
-     * @param integer $projectId
+     * @param int $projectId
      *
      * @return object
      */
     public function show($projectId)
     {
-        $data = $this->get('/projects/' . $projectId . '.json');
+        $data = $this->get('/projects/'.$projectId.'.json');
 
         return $data;
     }
@@ -63,14 +64,14 @@ class Projects extends AbstractApi
     /**
      * Update project.
      *
-     * @param integer $projectId
+     * @param int   $projectId
      * @param array $params
      *
      * @return object
      */
     public function update($projectId, array $params)
     {
-        $data = $this->put('/projects/' . $projectId . '.json', $params);
+        $data = $this->put('/projects/'.$projectId.'.json', $params);
 
         return $data;
     }
@@ -78,13 +79,13 @@ class Projects extends AbstractApi
     /**
      * Delete project.
      *
-     * @param integer $projectId
+     * @param int $projectId
      *
      * @return object
      */
     public function remove($projectId)
     {
-        $data = $this->delete('/projects/' . $projectId . '.json');
+        $data = $this->delete('/projects/'.$projectId.'.json');
 
         return $data;
     }

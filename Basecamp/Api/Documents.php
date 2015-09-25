@@ -1,4 +1,5 @@
 <?php
+
 namespace Basecamp\Api;
 
 /**
@@ -23,13 +24,13 @@ class Documents extends AbstractApi
     /**
      * Shows documents for specified project.
      *
-     * @param integer $projectId
+     * @param int $projectId
      *
      * @return array
      */
     public function allByProject($projectId)
     {
-        $data = $this->get('/projects/' . $projectId . '/documents.json');
+        $data = $this->get('/projects/'.$projectId.'/documents.json');
 
         return $data;
     }
@@ -37,14 +38,14 @@ class Documents extends AbstractApi
     /**
      * Specified document.
      *
-     * @param integer $projectId
-     * @param integer $docId
+     * @param int $projectId
+     * @param int $docId
      *
      * @return object
      */
     public function show($projectId, $docId)
     {
-        $data = $this->get('/projects/' . $projectId . '/documents/' . $docId . '.json');
+        $data = $this->get('/projects/'.$projectId.'/documents/'.$docId.'.json');
 
         return $data;
     }
@@ -52,14 +53,14 @@ class Documents extends AbstractApi
     /**
      * Create a new document.
      *
-     * @param integer $projectId
+     * @param int   $projectId
      * @param array $params
      *
      * @return object
      */
     public function create($projectId, array $params)
     {
-        $data = $this->post('/projects/' . $projectId . '/documents.json', $params);
+        $data = $this->post('/projects/'.$projectId.'/documents.json', $params);
 
         return $data;
     }
@@ -67,15 +68,15 @@ class Documents extends AbstractApi
     /**
      * Update document.
      *
-     * @param integer $projectId
-     * @param integer $docId
+     * @param int   $projectId
+     * @param int   $docId
      * @param array $params
      *
      * @return object
      */
     public function update($projectId, $docId, array $params)
     {
-        $data = $this->put('/projects/' . $projectId . '/documents/' . $docId . '.json', $params);
+        $data = $this->put('/projects/'.$projectId.'/documents/'.$docId.'.json', $params);
 
         return $data;
     }
@@ -83,14 +84,14 @@ class Documents extends AbstractApi
     /**
      * Remove document.
      *
-     * @param integer $projectId
-     * @param integer $docId
+     * @param int $projectId
+     * @param int $docId
      *
      * @return object
      */
     public function remove($projectId, $docId)
     {
-        $data = $this->delete('/projects/' . $projectId . '/documents/' . $docId . '.json');
+        $data = $this->delete('/projects/'.$projectId.'/documents/'.$docId.'.json');
 
         return $data;
     }

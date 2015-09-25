@@ -1,4 +1,5 @@
 <?php
+
 namespace Basecamp\Api;
 
 /**
@@ -11,7 +12,7 @@ class Topics extends AbstractApi
     /**
      * Get all topics.
      *
-     * @param integer $page
+     * @param int $page
      *
      * @return array
      */
@@ -27,14 +28,14 @@ class Topics extends AbstractApi
     /**
      * Get project topics.
      *
-     * @param integer $projectId
-     * @param integer $page
+     * @param int $projectId
+     * @param int $page
      *
      * @return array
      */
     public function allByProject($projectId, $page = 1)
     {
-        $data = $this->get('/projects/' . $projectId . '/topics.json', [
+        $data = $this->get('/projects/'.$projectId.'/topics.json', [
             'page' => $page,
         ]);
 
@@ -42,8 +43,8 @@ class Topics extends AbstractApi
     }
 
     /**
-     * @param  integer $projectId
-     * @param  integer $topicId
+     * @param int $projectId
+     * @param int $topicId
      *
      * @return array
      */
@@ -55,8 +56,8 @@ class Topics extends AbstractApi
     }
 
     /**
-     * @param  integer $projectId
-     * @param  integer $topicId
+     * @param int $projectId
+     * @param int $topicId
      *
      * @return array
      */

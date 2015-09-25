@@ -1,4 +1,5 @@
 <?php
+
 namespace Basecamp\Api;
 
 /**
@@ -11,14 +12,14 @@ class Uploads extends AbstractApi
     /**
      * Get upload.
      *
-     * @param integer $projectId
-     * @param integer $uploadId
+     * @param int $projectId
+     * @param int $uploadId
      *
      * @return object
      */
     public function show($projectId, $uploadId)
     {
-        $data = $this->get('/projects/' . $projectId . '/uploads/' . $uploadId . '.json');
+        $data = $this->get('/projects/'.$projectId.'/uploads/'.$uploadId.'.json');
 
         return $data;
     }
@@ -26,14 +27,14 @@ class Uploads extends AbstractApi
     /**
      * Create uploads.
      *
-     * @param integer $projectId
+     * @param int   $projectId
      * @param array $params
      *
      * @return object
      */
     public function create($projectId, array $params)
     {
-        $data = $this->post('/projects/' . $projectId . '/uploads.json', $params);
+        $data = $this->post('/projects/'.$projectId.'/uploads.json', $params);
 
         return $data;
     }

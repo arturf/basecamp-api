@@ -1,4 +1,5 @@
 <?php
+
 namespace Basecamp\Api;
 
 /**
@@ -11,13 +12,13 @@ class CalendarsEvents extends AbstractApi
     /**
      * Upcoming calendar events for the project.
      *
-     * @param integer $projectId
+     * @param int $projectId
      *
      * @return array
      */
     public function projectEvents($projectId)
     {
-        $data = $this->get('/projects/' . $projectId . '/calendar_events.json');
+        $data = $this->get('/projects/'.$projectId.'/calendar_events.json');
 
         return $data;
     }
@@ -25,13 +26,13 @@ class CalendarsEvents extends AbstractApi
     /**
      * Past calendar events for the project.
      *
-     * @param integer $projectId
+     * @param int $projectId
      *
      * @return array
      */
     public function projectEventsPast($projectId)
     {
-        $data = $this->get('/projects/' . $projectId . '/calendar_events/past.json');
+        $data = $this->get('/projects/'.$projectId.'/calendar_events/past.json');
 
         return $data;
     }
@@ -39,14 +40,14 @@ class CalendarsEvents extends AbstractApi
     /**
      * Specified project event.
      *
-     * @param integer $projectId
-     * @param integer $eventId
+     * @param int $projectId
+     * @param int $eventId
      *
      * @return object
      */
     public function projectEvent($projectId, $eventId)
     {
-        $data = $this->get('/projects/' . $projectId . '/calendar_events/' . $eventId . '.json');
+        $data = $this->get('/projects/'.$projectId.'/calendar_events/'.$eventId.'.json');
 
         return $data;
     }
@@ -54,14 +55,14 @@ class CalendarsEvents extends AbstractApi
     /**
      * New calendar event for a project.
      *
-     * @param integer $projectId
+     * @param int   $projectId
      * @param array $params
      *
      * @return object
      */
     public function projectEventCreate($projectId, array $params)
     {
-        $data = $this->post('/projects/' . $projectId . '/calendar_events.json', $params);
+        $data = $this->post('/projects/'.$projectId.'/calendar_events.json', $params);
 
         return $data;
     }
@@ -69,15 +70,15 @@ class CalendarsEvents extends AbstractApi
     /**
      * Update the specific calendar event on a project.
      *
-     * @param integer $projectId
-     * @param integer $eventId
+     * @param int   $projectId
+     * @param int   $eventId
      * @param array $params
      *
      * @return object
      */
     public function projectEventUpdate($projectId, $eventId, array $params)
     {
-        $data = $this->put('/projects/' . $projectId . '/calendar_events/' . $eventId . '.json', $params);
+        $data = $this->put('/projects/'.$projectId.'/calendar_events/'.$eventId.'.json', $params);
 
         return $data;
     }
@@ -85,14 +86,14 @@ class CalendarsEvents extends AbstractApi
     /**
      * Delete the project event.
      *
-     * @param integer $projectId
-     * @param integer $eventId
+     * @param int $projectId
+     * @param int $eventId
      *
      * @return object
      */
     public function projectEventDelete($projectId, $eventId)
     {
-        $data = $this->delete('/projects/' . $projectId . '/calendar_events/' . $eventId . '.json');
+        $data = $this->delete('/projects/'.$projectId.'/calendar_events/'.$eventId.'.json');
 
         return $data;
     }
@@ -100,13 +101,13 @@ class CalendarsEvents extends AbstractApi
     /**
      * Upcoming calendar events for the calendar.
      *
-     * @param integer $calendarId
+     * @param int $calendarId
      *
      * @return array
      */
     public function calendarEvents($calendarId)
     {
-        $data = $this->get('/calendars/' . $calendarId . '/calendar_events.json');
+        $data = $this->get('/calendars/'.$calendarId.'/calendar_events.json');
 
         return $data;
     }
@@ -114,13 +115,13 @@ class CalendarsEvents extends AbstractApi
     /**
      * Past calendar events for the calendar.
      *
-     * @param integer $calendarId
+     * @param int $calendarId
      *
      * @return array
      */
     public function calendarEventsPast($calendarId)
     {
-        $data = $this->get('/calendars/' . $calendarId . '/calendar_events/past.json');
+        $data = $this->get('/calendars/'.$calendarId.'/calendar_events/past.json');
 
         return $data;
     }
@@ -128,14 +129,14 @@ class CalendarsEvents extends AbstractApi
     /**
      * Specified calendar event.
      *
-     * @param integer $calendarId
-     * @param integer $eventId
+     * @param int $calendarId
+     * @param int $eventId
      *
      * @return object
      */
     public function calendarEvent($calendarId, $eventId)
     {
-        $data = $this->get('/calendars/' . $calendarId . '/calendar_events/' . $eventId . '.json');
+        $data = $this->get('/calendars/'.$calendarId.'/calendar_events/'.$eventId.'.json');
 
         return $data;
     }
@@ -143,14 +144,14 @@ class CalendarsEvents extends AbstractApi
     /**
      * New calendar event for a calendar.
      *
-     * @param integer $calendarId
+     * @param int   $calendarId
      * @param array $params
      *
      * @return object
      */
     public function calendarEventCreate($calendarId, array $params)
     {
-        $data = $this->post('/calendars/' . $calendarId . '/calendar_events.json', $params);
+        $data = $this->post('/calendars/'.$calendarId.'/calendar_events.json', $params);
 
         return $data;
     }
@@ -158,15 +159,15 @@ class CalendarsEvents extends AbstractApi
     /**
      * Update the specific calendar event on a calendar.
      *
-     * @param integer $calendarId
-     * @param integer $eventId
+     * @param int   $calendarId
+     * @param int   $eventId
      * @param array $params
      *
      * @return object
      */
     public function calendarEventUpdate($calendarId, $eventId, array $params)
     {
-        $data = $this->put('/calendars/' . $calendarId . '/calendar_events/' . $eventId . '.json', $params);
+        $data = $this->put('/calendars/'.$calendarId.'/calendar_events/'.$eventId.'.json', $params);
 
         return $data;
     }
@@ -174,14 +175,14 @@ class CalendarsEvents extends AbstractApi
     /**
      * Delete the calendar event.
      *
-     * @param integer $calendarId
-     * @param integer $eventId
+     * @param int $calendarId
+     * @param int $eventId
      *
      * @return object
      */
     public function calendarEventDelete($calendarId, $eventId)
     {
-        $data = $this->delete('/calendars/' . $calendarId . '/calendar_events/' . $eventId . '.json');
+        $data = $this->delete('/calendars/'.$calendarId.'/calendar_events/'.$eventId.'.json');
 
         return $data;
     }

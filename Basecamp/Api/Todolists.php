@@ -1,4 +1,5 @@
 <?php
+
 namespace Basecamp\Api;
 
 /**
@@ -35,13 +36,13 @@ class Todolists extends AbstractApi
     /**
      * Active todolists for project.
      *
-     * @param integer $projectId
+     * @param int $projectId
      *
      * @return array
      */
     public function allByProject($projectId)
     {
-        $data = $this->get('/projects/' . $projectId . '/todolists.json');
+        $data = $this->get('/projects/'.$projectId.'/todolists.json');
 
         return $data;
     }
@@ -49,13 +50,13 @@ class Todolists extends AbstractApi
     /**
      * Completed todolists for this project.
      *
-     * @param integer $projectId
+     * @param int $projectId
      *
      * @return array
      */
     public function completedByProject($projectId)
     {
-        $data = $this->get('/projects/' . $projectId . '/todolists/completed.json');
+        $data = $this->get('/projects/'.$projectId.'/todolists/completed.json');
 
         return $data;
     }
@@ -63,14 +64,14 @@ class Todolists extends AbstractApi
     /**
      * Get todolist.
      *
-     * @param integer $projectId
-     * @param integer $todolistId
+     * @param int $projectId
+     * @param int $todolistId
      *
      * @return object
      */
     public function show($projectId, $todolistId)
     {
-        $data = $this->get('/projects/' . $projectId . '/todolists/' . $todolistId . '.json');
+        $data = $this->get('/projects/'.$projectId.'/todolists/'.$todolistId.'.json');
 
         return $data;
     }
@@ -78,13 +79,13 @@ class Todolists extends AbstractApi
     /**
      * All todolists with todos assigned to the specified person.
      *
-     * @param integer $userId
+     * @param int $userId
      *
      * @return array
      */
     public function assigned($userId)
     {
-        $data = $this->get('/people/' . $userId . '/assigned_todos.json');
+        $data = $this->get('/people/'.$userId.'/assigned_todos.json');
 
         return $data;
     }
@@ -92,14 +93,14 @@ class Todolists extends AbstractApi
     /**
      * Create todolist.
      *
-     * @param integer $projectId
+     * @param int   $projectId
      * @param array $params
      *
      * @return object
      */
     public function create($projectId, array $params)
     {
-        $data = $this->post('/projects/' . $projectId . '/todolists.json', $params);
+        $data = $this->post('/projects/'.$projectId.'/todolists.json', $params);
 
         return $data;
     }
@@ -107,15 +108,15 @@ class Todolists extends AbstractApi
     /**
      * Update todolist.
      *
-     * @param integer $projectId
-     * @param integer $todolistId
+     * @param int   $projectId
+     * @param int   $todolistId
      * @param array $params
      *
      * @return object
      */
     public function update($projectId, $todolistId, array $params)
     {
-        $data = $this->put('/projects/' . $projectId . '/todolists/' . $todolistId . '.json', $params);
+        $data = $this->put('/projects/'.$projectId.'/todolists/'.$todolistId.'.json', $params);
 
         return $data;
     }
@@ -123,14 +124,14 @@ class Todolists extends AbstractApi
     /**
      * Delete todolist.
      *
-     * @param integer $projectId
-     * @param integer $todolistId
+     * @param int $projectId
+     * @param int $todolistId
      *
      * @return object
      */
     public function remove($projectId, $todolistId)
     {
-        $data = $this->delete('/projects/' . $projectId . '/todolists/' . $todolistId . '.json');
+        $data = $this->delete('/projects/'.$projectId.'/todolists/'.$todolistId.'.json');
 
         return $data;
     }
