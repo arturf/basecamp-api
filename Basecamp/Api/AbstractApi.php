@@ -71,7 +71,7 @@ abstract class AbstractApi
 
         $response = new Response();
 
-        $bc = new Curl();
+        $bc = $this->client->createCurl();
         $bc->setTimeout($this->timeout);
 
         if (!empty($this->client->getAccountData()['login']) && !empty($this->client->getAccountData()['password'])) {

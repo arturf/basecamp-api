@@ -1,5 +1,6 @@
 <?php
 namespace Basecamp;
+use Buzz\Client\Curl;
 use Basecamp\Api\Accesses;
 use Basecamp\Api\Attachments;
 use Basecamp\Api\CalendarsEvents;
@@ -45,6 +46,15 @@ class Client
     public function __construct(array $accountData)
     {
         $this->accountData = $accountData;
+    }
+
+    /**
+     * Create Curl client object
+     *
+     * Override to use Buzz extensions, for example CachedCurl
+     */
+    public function createCurl() {
+        return new Curl();
     }
 
     /**
