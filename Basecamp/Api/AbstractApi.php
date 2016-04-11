@@ -9,9 +9,6 @@ use Buzz\Message\Request;
  */
 abstract class AbstractApi
 {
-    const BASE_URL = 'https://basecamp.com/';
-    const API_VERSION = '/api/v1';
-
     protected $client = null;
     private $timeout = 10;
 

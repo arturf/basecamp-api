@@ -1,6 +1,7 @@
 <?php
 namespace Basecamp;
 use Buzz\Client\Curl;
+use Buzz\Message\Request;
 use Buzz\Message\Response;
 use Basecamp\Api\Accesses;
 use Basecamp\Api\Attachments;
@@ -23,6 +24,9 @@ use Basecamp\Api\Uploads;
  */
 class Client
 {
+    const BASE_URL = 'https://basecamp.com/';
+    const API_VERSION = '/api/v1';
+
     /**
      * Account data.
      *
