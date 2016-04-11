@@ -233,7 +233,7 @@ class Client
      *
      * @return mixed[]
      */
-    protected function request($method, $resource, $params = [], $timeout = 10)
+    public function request($method, $resource, $params = [], $timeout = 10)
     {
         $message = new Request($method, $resource, self::BASE_URL . $this->getAccountData()['accountId'] . self::API_VERSION);
         $message->setHeaders([
