@@ -227,4 +227,87 @@ class Client
     {
         return new Uploads($this);
     }
+
+    /**
+     * Make HTTP Request
+     *
+     * @return mixed[]
+     */
+    protected function request($method, $resource, $params = [], $timeout = 10)
+    {
+        $message = new Request($method, $resource, self::BASE_URL . $this->getAccountData()['accountId'] . self::API_VERSION);
+        $message->setHeaders([
+            'User-Agent: ' . $this->getAccountData()['appName'],
+            'Content-Type: application/json',
+        ]);
+
+        if (!empty($params)) {
+            // When attaching files set content as is
+            if (array_key_exists('binary', $params)) {
+                $message->setContent($params['binary']);
+            } else {
+                $message->setContent(json_encode($params));
+            }
+        }
+
+        $response = new Response();
+
+        $bc = $this->createCurl();
+        $bc->setTimeout($timeout);
+
+        if (!empty($this->getAccountData()['login']) && !empty($this->getAccountData()['password'])) {
+            $bc->setOption(CURLOPT_USERPWD, $this->getAccountData()['login'] . ':' . $this->getAccountData()['password']);
+        } elseif (!empty($this->getAccountData()['token'])) {
+            $message->addHeader('Authorization: Bearer ' . $this->getAccountData()['token']);
+        }
+
+        $bc->send($message, $response);
+        $data = new \stdClass();
+
+        switch ($response->getStatusCode()) {
+            case 201:
+                $data = json_decode($response->getContent());
+                $data->message = 'Created';
+                break;
+            case 204:
+                $data->message = 'Resource succesfully deleted';
+                break;
+            case 304:
+                $data->message = '304 Not Modified';
+                break;
+            case 400:
+                $data->message = '400 Bad Request';
+                break;
+            case 403:
+                $data->message = '403 Forbidden';
+                break;
+            case 404:
+                $data->message = '404 Not Found';
+                break;
+            case 415:
+                $data->message = '415 Unsupported Media Type';
+                break;
+            case 429:
+                $data->message = '429 Too Many Requests. ' . $response->getHeader('Retry-After');
+                break;
+            case 500:
+                $data->message = '500 Hmm, that isn’t right';
+                break;
+            case 502:
+                $data->message = '502 Bad Gateway';
+                break;
+            case 503:
+                $data->message = '503 Service Unavailable';
+                break;
+            case 504:
+                $data->message = '504 Gateway Timeout';
+                break;
+            default:
+                $data = json_decode($response->getContent());
+                break;
+        }
+
+        return $data;
+    }
+
 }
