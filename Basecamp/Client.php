@@ -49,6 +49,17 @@ class Client
     }
 
     /**
+     * Set access token
+     *
+     * @param $value
+     * @return $this
+     */
+    public function setToken($value) {
+        $this->accountData['token'] = $value;
+        return $this;
+    }
+
+    /**
      * Create Curl client object
      *
      * Override to use Buzz extensions, for example CachedCurl
