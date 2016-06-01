@@ -17,9 +17,9 @@ class Todos extends AbstractApi
      *
      * @return object
      */
-    public function show($projectId, $todoId)
+    public function show($projectId, $todoId, array $params = [])
     {
-        $data = $this->get('/projects/' . $projectId . '/todos/' . $todoId . '.json');
+        $data = $this->get('/projects/' . $projectId . '/todos/' . $todoId . '.json', $params);
         
         return $data;
     }
