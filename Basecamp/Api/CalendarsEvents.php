@@ -15,9 +15,9 @@ class CalendarsEvents extends AbstractApi
      *
      * @return array
      */
-    public function projectEvents($projectId)
+    public function projectEvents($projectId, array $params = [])
     {
-        $data = $this->get('/projects/' . $projectId . '/calendar_events.json');
+        $data = $this->get('/projects/' . $projectId . '/calendar_events.json', $params);
 
         return $data;
     }
