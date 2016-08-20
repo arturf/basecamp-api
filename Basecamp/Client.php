@@ -18,6 +18,7 @@ use Basecamp\Api\Todolists;
 use Basecamp\Api\Todos;
 use Basecamp\Api\Topics;
 use Basecamp\Api\Uploads;
+use Basecamp\Storage;
 
 /**
  * Class Client.
@@ -240,11 +241,17 @@ class Client
      */
     public function request($method, $resource, $params = [], $timeout = 10)
     {
-        $message = new Request($method, $resource, self::BASE_URL . $this->getAccountData()['accountId'] . self::API_VERSION);
-        $message->setHeaders([
+        $headers = [
             'User-Agent: ' . $this->getAccountData()['appName'],
             'Content-Type: application/json',
-        ]);
+            ];
+        $storage = Storage::get();
+        $etag = $storage->get( md5($method.$resource.join('|',$params)) );
+        if ( $etag ) {
+            $headers[] = 'If-None-Match: '.$etag;
+        }
+        $message = new Request($method, $resource, self::BASE_URL . $this->getAccountData()['accountId'] . self::API_VERSION);
+        $message->setHeaders($headers);
 
         if (!empty($params)) {
             // When attaching files set content as is
@@ -268,6 +275,7 @@ class Client
 
         $bc->send($message, $response);
         $data = new \stdClass();
+        $storage->put( md5($method.$resource.join('|',$params)), trim($response->getHeader('ETag'),'"') );
 
         switch ($response->getStatusCode()) {
             case 201:
