@@ -2,8 +2,18 @@
 namespace Basecamp;
 use Basecamp\StorageSession;
 
+/**
+ * Class Storage.
+ */
 class Storage {
-	public static function get( $storage = 'session' ) {
-		return new StorageSession();
-	}
+
+    /**
+     * Factory for storage classes
+     *
+     * @param $storage
+     * @return $mixed
+     */
+    public static function get( $storage = 'session' ) {
+        return new StorageSession();
+    }
 }
