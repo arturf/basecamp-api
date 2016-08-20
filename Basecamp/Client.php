@@ -2,7 +2,6 @@
 
 namespace Basecamp;
 
-use Basecamp\Storage;
 use Basecamp\Api\Accesses;
 use Basecamp\Api\Attachments;
 use Basecamp\Api\Calendars;
