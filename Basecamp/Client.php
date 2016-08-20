@@ -17,6 +17,7 @@ use Basecamp\Api\Todolists;
 use Basecamp\Api\Todos;
 use Basecamp\Api\Topics;
 use Basecamp\Api\Uploads;
+use Basecamp\Storage;
 use Buzz\Client\Curl;
 use Buzz\Message\Request;
 use Buzz\Message\Response;
