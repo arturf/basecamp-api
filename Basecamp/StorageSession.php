@@ -85,6 +85,7 @@ class StorageSession
                     break;
             }
         }
+
         return md5($data);
     }
 }
