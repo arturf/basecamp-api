@@ -246,8 +246,8 @@ class Client
             'Content-Type: application/json',
             ];
         $storage = Storage::get();
-        $etag = $storage->get( md5($method.$resource.join('|',$params)) );
-        if ( $etag ) {
+        $etag = $storage->get(md5($method.$resource.join('|',$params)));
+        if ($etag) {
             $headers[] = 'If-None-Match: '.$etag;
         }
         $message = new Request($method, $resource, self::BASE_URL . $this->getAccountData()['accountId'] . self::API_VERSION);
@@ -275,7 +275,7 @@ class Client
 
         $bc->send($message, $response);
         $data = new \stdClass();
-        $storage->put( md5($method.$resource.join('|',$params)), trim($response->getHeader('ETag'),'"') );
+        $storage->put(md5($method.$resource.join('|',$params)), trim($response->getHeader('ETag'),'"'));
 
         switch ($response->getStatusCode()) {
             case 201:
