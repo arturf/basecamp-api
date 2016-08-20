@@ -250,11 +250,15 @@ class Client
             'User-Agent: '.$this->getAccountData()['appName'],
             'Content-Type: application/json',
             ];
+
         $storage = Storage::get();
-        $etag = $storage->get(md5($method.$resource.implode('|', $params)));
+        $hash = $storage->createHash($method, $resource, $params);
+        $etag = $storage->get($hash);
+
         if ($etag) {
             $headers[] = 'If-None-Match: '.$etag;
         }
+
         $message = new Request($method, $resource, self::BASE_URL.$this->getAccountData()['accountId'].self::API_VERSION);
         $message->setHeaders($headers);
 
@@ -279,8 +283,10 @@ class Client
         }
 
         $bc->send($message, $response);
+
+        $storage->put($hash, trim($response->getHeader('ETag'), '"'));
+
         $data = new \stdClass();
-        $storage->put(md5($method.$resource.implode('|', $params)), trim($response->getHeader('ETag'), '"'));
 
         switch ($response->getStatusCode()) {
             case 201:
