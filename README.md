@@ -3,6 +3,10 @@ A PHP Wrapper for use with the [new Basecamp API](https://github.com/basecamp/bc
 
 Simple PHP library to communicate with Basecamp. Works only with new Basecamp.
 
+This library use HTTP caching ETag according [this recommendation](https://github.com/basecamp/bcx-api#use-http-caching).
+
+TODO: [Pagination](https://github.com/basecamp/bcx-api#pagination).
+
 Installation
 ------------
 Install Composer
