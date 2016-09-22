@@ -240,6 +240,16 @@ class Client
     }
 
     /**
+     * clear the saved cache stored in session
+     * useful when a user wants to get a full list of entries regardless of what was previously requested
+     */
+    public function clearCache()
+    {
+        $storage = Storage::get();
+        $storage->clear();
+    }
+
+    /**
      * Make HTTP Request.
      *
      * @return mixed[]
@@ -247,19 +257,19 @@ class Client
     public function request($method, $resource, $params = [], $timeout = 10)
     {
         $headers = [
-            'User-Agent: '.$this->getAccountData()['appName'],
+            'User-Agent: ' . $this->getAccountData()['appName'],
             'Content-Type: application/json',
-            ];
+        ];
 
         $storage = Storage::get();
         $hash = $storage->createHash($method, $resource, $params);
         $etag = $storage->get($hash);
 
         if ($etag) {
-            $headers[] = 'If-None-Match: '.$etag;
+            $headers[] = 'If-None-Match: ' . $etag;
         }
 
-        $message = new Request($method, $resource, self::BASE_URL.$this->getAccountData()['accountId'].self::API_VERSION);
+        $message = new Request($method, $resource, self::BASE_URL . $this->getAccountData()['accountId'] . self::API_VERSION);
         $message->setHeaders($headers);
 
         if (!empty($params)) {
@@ -277,9 +287,9 @@ class Client
         $bc->setTimeout($timeout);
 
         if (!empty($this->getAccountData()['login']) && !empty($this->getAccountData()['password'])) {
-            $bc->setOption(CURLOPT_USERPWD, $this->getAccountData()['login'].':'.$this->getAccountData()['password']);
+            $bc->setOption(CURLOPT_USERPWD, $this->getAccountData()['login'] . ':' . $this->getAccountData()['password']);
         } elseif (!empty($this->getAccountData()['token'])) {
-            $message->addHeader('Authorization: Bearer '.$this->getAccountData()['token']);
+            $message->addHeader('Authorization: Bearer ' . $this->getAccountData()['token']);
         }
 
         $bc->send($message, $response);
@@ -312,10 +322,10 @@ class Client
                 $data->message = '415 Unsupported Media Type';
                 break;
             case 429:
-                $data->message = '429 Too Many Requests. '.$response->getHeader('Retry-After');
+                $data->message = '429 Too Many Requests. ' . $response->getHeader('Retry-After');
                 break;
             case 500:
-                $data->message = '500 Hmm, that isn’t right';
+                $data->message = '500 Hmm, that isnï¿½t right';
                 break;
             case 502:
                 $data->message = '502 Bad Gateway';

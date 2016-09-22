@@ -16,6 +16,11 @@ class StorageSession
             session_id('AtHe3hAtuP');
             session_start();
         }
+
+        // seed session with basecamp key if it isn't present
+        if (!isset($_SESSION['basecamp'])) {
+            $this->clear();
+        }
     }
 
     /**
@@ -23,11 +28,15 @@ class StorageSession
      *
      * @param $hash
      *
-     * @return string
+     * @return mixed return ETag string, otherwise return false
      */
     public function get($hash)
     {
-        return $_SESSION['basecamp'][$hash];
+        if (isset($_SESSION['basecamp'][$hash])) {
+            return $_SESSION['basecamp'][$hash];
+        } else {
+            return false;
+        }
     }
 
     /**
